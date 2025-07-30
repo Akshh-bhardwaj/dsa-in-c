@@ -35,7 +35,8 @@ DSA problems and solutions in C for interview prep
 
 - ✅ C (Main)
 - ✅ C++ (Planned)
-- Python (Bonus later)
+
+  
 
 ---
 
