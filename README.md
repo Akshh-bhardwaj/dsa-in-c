@@ -18,6 +18,33 @@ DSA problems and solutions in C for interview prep
 | Trees         | 🔜      | Traversals, BST                 |
 
 ---
+├── Arrays/
+│ ├── two_sum.c
+│ ├── max_min_element.c
+│ └── reverse_array.c
+├── Sorting/
+│ ├── bubble_sort.c
+│ ├── insertion_sort.c
+│ └── quick_sort.c
+├── LinkedList/
+│ ├── insert_node.c
+│ ├── delete_node.c
+│ └── reverse_list.c
+├── Stack/
+│ ├── stack_array.c
+│ └── stack_linkedlist.c
+├── Queue/
+│ ├── queue_array.c
+│ └── queue_linkedlist.c
+└── Trees/
+├── bst_insert.c
+├── inorder_traversal.c
+└── bst_height.c
+
+yaml
+Copy
+Edit
+
 
 ## 🧪 Sample Problems
 
