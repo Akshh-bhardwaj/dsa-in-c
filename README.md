@@ -41,9 +41,6 @@ DSA problems and solutions in C for interview prep
 ├── inorder_traversal.c
 └── bst_height.c
 
-yaml
-Copy
-Edit
 
 
 ## 🧪 Sample Problems
