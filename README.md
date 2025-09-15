@@ -11,7 +11,7 @@ DSA problems and solutions in C for interview prep
 | Strings       | ✅      | Palindrome, anagrams, etc.      |
 | Sorting       | ✅      | Bubble, Merge, Quick sort       |
 | Searching     | ✅      | Linear & Binary search          |
-| Linked List   | ⏳      | Basic implementation            |
+| Linked List   | ✅      | Basic implementation            |
 | Stack         | ⏳      | Valid parentheses, min stack    |
 | Queue         | ⏳      | Circular queue, using stacks    |
 | Recursion     | ⏳      | Fibonacci, factorial            |
