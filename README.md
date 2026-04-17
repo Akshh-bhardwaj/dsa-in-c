@@ -12,36 +12,55 @@ DSA problems and solutions in C for interview prep
 | Sorting       | ✅      | Bubble, Merge, Quick sort       |
 | Searching     | ✅      | Linear & Binary search          |
 | Linked List   | ✅      | Basic implementation            |
-| Stack         | ⏳      | Valid parentheses, min stack    |
-| Queue         | ⏳      | Circular queue, using stacks    |
-| Recursion     | ⏳      | Fibonacci, factorial            |
-| Trees         | 🔜      | Traversals, BST                 |
+| Stack         | ✅      | Valid parentheses, infix→postfix|
+| Queue         | ✅      | Circular queue, using stacks    |
+| Recursion     | ✅      | Fibonacci, factorial            |
+| Trees         | ✅      | Traversals, BST, height         |
 
 ---
+
+## 📁 Folder Structure
+
+```
+dsa-in-c/
 ├── Arrays/
-│ ├── two_sum.c
-│ ├── max_min_element.c
-│ └── reverse_array.c
+│   ├── two_sum.c
+│   ├── max_min_element.c
+│   ├── reverse_array.c
+│   ├── move_zeroes.c
+│   └── prefix_sum.c
+├── Strings/
+│   ├── palindrome.c
+│   ├── anagram.c
+│   └── reverse_string.c
 ├── Sorting/
-│ ├── bubble_sort.c
-│ ├── insertion_sort.c
-│ └── quick_sort.c
+│   ├── bubble_sort.c
+│   ├── insertion_sort.c
+│   ├── merge_sort.c
+│   └── quick_sort.c
+├── Searching/
+│   ├── linear_search.c
+│   └── binary_search.c
 ├── LinkedList/
-│ ├── insert_node.c
-│ ├── delete_node.c
-│ └── reverse_list.c
+│   ├── insert_node.c
+│   ├── delete_node.c
+│   └── reverse_list.c
 ├── Stack/
-│ ├── stack_array.c
-│ └── stack_linkedlist.c
+│   ├── stack_array.c       (valid parentheses included)
+│   └── stack_linkedlist.c  (infix → postfix included)
 ├── Queue/
-│ ├── queue_array.c
-│ └── queue_linkedlist.c
+│   ├── queue_array.c       (circular queue)
+│   └── queue_linkedlist.c  (queue using two stacks)
+├── Recursion/
+│   ├── factorial.c
+│   └── fibonacci.c
 └── Trees/
-├── bst_insert.c
-├── inorder_traversal.c
-└── bst_height.c
+    ├── bst_insert.c
+    ├── inorder_traversal.c (all 4 traversals + level order)
+    └── bst_height.c        (height + diameter)
+```
 
-
+---
 
 ## 🧪 Sample Problems
 
@@ -50,8 +69,8 @@ DSA problems and solutions in C for interview prep
 - ✅ Bubble Sort
 - ✅ Move Zeroes
 - ✅ Reverse a Linked List
-- ⏳ Infix to Postfix
-- 🔜 Level Order Traversal
+- ✅ Infix to Postfix
+- ✅ Level Order Traversal
 
 ---
 
@@ -60,16 +79,26 @@ DSA problems and solutions in C for interview prep
 - ✅ C (Main)
 - ✅ C++ (Planned)
 
-  
-
 ---
 
 ## 🎯 Goals
 
-- Master common DSA problems
-- Improve speed and accuracy
-- Build strong coding profile for placements
-- Contribute to open-source DSA repositories
+- ✅ Master common DSA problems
+- ✅ Improve speed and accuracy
+- ✅ Build strong coding profile for placements
+- ✅ Contribute to open-source DSA repositories
+
+---
+
+## ⚡ How to Compile & Run
+
+Each `.c` file is standalone. To compile and run any file:
+
+```bash
+# Example: compile and run Two Sum
+gcc Arrays/two_sum.c -o two_sum
+./two_sum
+```
 
 ---
 
@@ -95,4 +124,4 @@ If you'd like to add a better solution or contribute a new topic, feel free to o
 
 ---
 
-> “Consistency is the key to mastery.” 🔑
+> "Consistency is the key to mastery." 🔑

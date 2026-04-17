@@ -1,23 +1,35 @@
+/*
+ * Linear Search
+ * -------------
+ * Search for a target in an unsorted array by scanning each element.
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+
 #include <stdio.h>
 
-int linearSearch(int arr[], int n, int key) {
+int linearSearch(int arr[], int n, int target) {
     for (int i = 0; i < n; i++) {
-        if (arr[i] == key)
-            return i;
+        if (arr[i] == target) return i;
     }
-    return -1;
+    return -1; /* Not found */
 }
 
 int main() {
-    int arr[] = {5, 3, 7, 1, 9};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int key = 7;
+    int arr[] = {4, 2, 9, 7, 3, 15, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int target = 7;
 
-    int result = linearSearch(arr, n, key);
+    printf("Array: ");
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\nSearching for: %d\n", target);
+
+    int result = linearSearch(arr, n, target);
     if (result != -1)
-        printf("Element found at index: %d\n", result);
+        printf("Found at index: %d\n", result);
     else
-        printf("Element not found\n");
+        printf("Element not found!\n");
 
     return 0;
 }

@@ -1,56 +1,114 @@
+/*
+ * Stack using Linked List
+ * -----------------------
+ * Dynamic stack – no size limit (bounded only by memory).
+ * Includes Infix to Postfix conversion demo.
+ *
+ * Time Complexity: O(1) push/pop/peek
+ * Space Complexity: O(n)
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
-struct Node {
-    int data;
-    struct Node* next;
-};
+typedef struct Node {
+    char data;
+    struct Node *next;
+} Node;
 
-struct Node* top = NULL;
+typedef struct {
+    Node *top;
+    int size;
+} Stack;
 
-void push(int x) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = x;
-    newNode->next = top;
-    top = newNode;
-    printf("%d pushed to stack\n", x);
+void initStack(Stack *s) { s->top = NULL; s->size = 0; }
+
+int isEmpty(Stack *s) { return s->top == NULL; }
+
+void push(Stack *s, char data) {
+    Node *n = (Node *)malloc(sizeof(Node));
+    n->data = data;
+    n->next = s->top;
+    s->top = n;
+    s->size++;
 }
 
-int pop() {
-    if (top == NULL) {
-        printf("Stack Underflow\n");
-        return -1;
-    }
-    int x = top->data;
-    struct Node* temp = top;
-    top = top->next;
+char pop(Stack *s) {
+    if (isEmpty(s)) { printf("Stack Underflow!\n"); return '\0'; }
+    Node *temp = s->top;
+    char val = temp->data;
+    s->top = temp->next;
     free(temp);
-    return x;
+    s->size--;
+    return val;
 }
 
-int peek() {
-    if (top == NULL)
-        return -1;
-    return top->data;
+char peek(Stack *s) {
+    if (isEmpty(s)) return '\0';
+    return s->top->data;
 }
 
-void display() {
-    struct Node* temp = top;
-    printf("Stack: ");
-    while (temp != NULL) {
-        printf("%d ", temp->data);
-        temp = temp->next;
+/* ---- Infix to Postfix Conversion ---- */
+int precedence(char op) {
+    if (op == '+' || op == '-') return 1;
+    if (op == '*' || op == '/') return 2;
+    if (op == '^')              return 3;
+    return 0;
+}
+
+void infixToPostfix(char *infix, char *postfix) {
+    Stack s;
+    initStack(&s);
+    int k = 0;
+
+    for (int i = 0; infix[i]; i++) {
+        char c = infix[i];
+
+        if (isalnum(c)) {
+            postfix[k++] = c; /* Operand goes directly to output */
+        } else if (c == '(') {
+            push(&s, c);
+        } else if (c == ')') {
+            while (!isEmpty(&s) && peek(&s) != '(')
+                postfix[k++] = pop(&s);
+            if (!isEmpty(&s)) pop(&s); /* Remove '(' */
+        } else {
+            /* Operator: pop higher or equal precedence operators first */
+            while (!isEmpty(&s) && precedence(peek(&s)) >= precedence(c))
+                postfix[k++] = pop(&s);
+            push(&s, c);
+        }
     }
-    printf("\n");
+    while (!isEmpty(&s)) postfix[k++] = pop(&s);
+    postfix[k] = '\0';
 }
 
 int main() {
-    push(10);
-    push(20);
-    push(30);
-    display();
-    printf("Top element is %d\n", peek());
-    printf("Popped element is %d\n", pop());
-    display();
+    /* Demonstrate stack push/pop */
+    Stack s;
+    initStack(&s);
+    push(&s, 'A');
+    push(&s, 'B');
+    push(&s, 'C');
+    printf("Stack top: %c\n", peek(&s));
+    printf("Popped: %c\n", pop(&s));
+    printf("Popped: %c\n", pop(&s));
+
+    /* Infix to Postfix */
+    printf("\n--- Infix to Postfix ---\n");
+    char *expressions[] = {
+        "A+B*C",
+        "(A+B)*C",
+        "A+B*C-D/E",
+        "(A+B)*(C-D)"
+    };
+    char result[100];
+    for (int i = 0; i < 4; i++) {
+        infixToPostfix(expressions[i], result);
+        printf("Infix: %-15s => Postfix: %s\n", expressions[i], result);
+    }
+
     return 0;
 }
